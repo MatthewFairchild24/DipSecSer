@@ -1,0 +1,40 @@
+header {
+	background-color: rgba(48, 100, 153, 1);
+	color: white;
+	padding: 0.5rem;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+header h3 {
+	font-size: 35px;
+}
+.logo img {
+	height: 100px;
+	width: auto;
+	padding-right: 1rem;
+	transition: transform 0.3s;
+}
+
+.logoName {
+	display: flex;
+	align-items: center;
+}
+.navList {
+	list-style: none;
+	display: flex;
+	margin: 0;
+	padding: 0;
+}
+
+.navItem {
+	margin: 0 15px;
+	cursor: pointer;
+	transition: color 0.3s;
+	font-size: large;
+}
+.navItem:hover {
+	color: #ff8900;
+}
