@@ -3,15 +3,19 @@ import styles from './MainCard.module.scss'
 export default function MainCard() {
 	return (
 		<>
-			<section>
-				<div className={styles.containerCard}>
-					<div className={styles.imgCard}>
-						<img src='' alt='' />
-					</div>
-					<p>Title</p>
-					<p>Description</p>
+			<div className={styles.containerCard}>
+				<div className={styles.imgCard}>
+					<img src='../image/def.jpg' alt='' />
 				</div>
-			</section>
+				<div className={styles.contentCard}>
+					<div className={styles.titleCard}>
+						<p>Title</p>
+					</div>
+					<div className={styles.descriptionCard}>
+						<p>Description</p>
+					</div>
+				</div>
+			</div>
 		</>
 	)
 }

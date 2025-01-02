@@ -1,0 +1,49 @@
+
+
+.containerAC {
+	.contentAC {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px;
+		background-color: #fff;
+	}
+	.textAC {
+		flex: 1;
+		padding: 30px 150px 0 30px;
+		text-align: center;
+	}
+	.stackImgAC {
+		position: relative;
+		width: 350px;
+		height: 350px;
+	}
+
+	.backCon {
+		position: absolute;
+		width: 350px;
+		height: 197px;
+		background-color: rgba(210, 210, 210, 1);
+		z-index: 1;
+		top: 50px;
+		right: 75px;
+	}
+
+	.image {
+		position: relative;
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		z-index: 2;
+	}
+
+	.imageOverlay {
+		position: absolute;
+		top: 100px;
+		right: 150px;
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		z-index: 2;
+	}
+}

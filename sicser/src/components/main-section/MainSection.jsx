@@ -8,6 +8,9 @@ export default function MainSection() {
 		backgroundColor: 'rgba(217, 217, 217, 1)',
 		marginTop: '3rem',
 	}
+	const styleMiddleCard = {
+		backgroundColor: 'rgba(112, 112, 112, 1)',
+	}
 
 	return (
 		<>
@@ -26,6 +29,11 @@ export default function MainSection() {
 								<a href='#'>Наши услуги</a>
 							</Button>
 						</div>
+					</div>
+					<div className={styles.sectionCard}>
+						<MainCard></MainCard>
+						<MainCard style={styleMiddleCard}></MainCard>
+						<MainCard></MainCard>
 					</div>
 				</section>
 			</main>
