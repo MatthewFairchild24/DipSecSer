@@ -1,6 +1,6 @@
 import styles from './MainSection.module.scss'
-import Button from '../button/Button'
-import MainCard from '../mainCard/MainCard'
+import Button from '../../components/button/Button'
+import MainCard from '../../components/mainCard/MainCard'
 
 export default function MainSection() {
 	const styleButton = {

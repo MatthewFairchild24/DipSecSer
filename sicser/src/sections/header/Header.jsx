@@ -1,5 +1,5 @@
 import styles from './Header.module.scss'
-import Button from '../button/Button'
+import Button from '../../components/button/Button'
 
 export default function Header() {
 	return (

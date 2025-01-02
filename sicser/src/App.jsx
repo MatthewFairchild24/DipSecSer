@@ -1,7 +1,7 @@
-import Header from './components/header/Header'
-import TopHeader from './components/top-header/TopHeader'
-import MainSection from './components/main-section/MainSection'
-import AboutCompany from './components/aboutCompany/AboutCompany'
+import Header from './sections/header/Header'
+import TopHeader from './sections/top-header/TopHeader'
+import MainSection from './sections/main-section/MainSection'
+import AboutCompany from './sections/aboutCompany/AboutCompany'
 import BinCon from './components/BinCon/BinCon'
 import './App.css'
 
