@@ -1,0 +1,16 @@
+.sectionService {
+	display: flex;
+	justify-content: center;
+
+	.titleS {
+		text-align: center;
+		padding: 40px 0 10px;
+	}
+
+	.containerCard {
+		display: flex;
+		gap: 60px;
+		padding-top: 30px;
+		padding-bottom: 40px;
+	}
+}

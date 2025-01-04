@@ -1,9 +1,9 @@
-import styles from './MainCard.module.scss'
+import styles from './ServiceCard.module.scss'
 
-export default function MainCard({ children, style }) {
+export default function ServiceCard({ children }) {
 	return (
 		<>
-			<div className={styles.containerCard} style={style}>
+			<div className={styles.containerCard}>
 				<div className={styles.imgCard}>
 					<img src='../image/static/def.jpg' alt='' />
 				</div>

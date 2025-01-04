@@ -18,9 +18,13 @@ export default function AboutCompany() {
 						</div>
 						<div className={styles.stackImgAC}>
 							<div className={styles.backCon}></div>
-							<img src='../image/main.jpg' alt='' className={styles.image} />
 							<img
-								src='../image/company3.jpg'
+								src='../image/static/main.jpg'
+								alt=''
+								className={styles.image}
+							/>
+							<img
+								src='../image/static/company3.jpg'
 								alt=''
 								className={styles.imageOverlay}
 							/>
