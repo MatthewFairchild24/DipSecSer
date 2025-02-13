@@ -14,7 +14,7 @@ export default function MainSection() {
 		marginTop: '3rem',
 	}
 	const styleMiddleCard = {
-		backgroundColor: 'rgba(112, 112, 112, 1)',
+		backgroundColor: 'rgb(146, 146, 146)',
 	}
 
 	useEffect(() => {
@@ -47,18 +47,11 @@ export default function MainSection() {
 			})
 	}, [])
 
-	const getImagePathById = (id) => {
-		const image = images.find((img) => img.galleryId === id)
+	const getImagePathById = (id, images) => {
+		const image = images.find((img) => img.id === id)
 
 		return image ? image.imagePath : ''
 	}
-
-	const getCard = (card) => {
-		console.log(card)
-		return
-	}
-
-	getCard(cardsData)
 
 	return (
 		<>
@@ -82,7 +75,7 @@ export default function MainSection() {
 						{cardsData.map((card, index) => (
 							<MainCard
 								key={index}
-								image={getImagePathById(card.galleryId)}
+								image={getImagePathById(card.galleryId, images)}
 								title={card.title}
 								description={card.description}
 								style={index === 1 ? styleMiddleCard : {}}

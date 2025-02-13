@@ -48,9 +48,13 @@ button a {
 .sectionCard {
 	display: flex;
 	justify-content: center;
+
 	position: relative;
 	bottom: 190px;
 	gap: 0.1px;
+}
+.sectionCard img {
+	max-width: 30%;
 }
 
 /* Адаптивные стили для мобильных устройств */

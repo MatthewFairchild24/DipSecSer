@@ -1,18 +1,18 @@
 import styles from './ServiceCard.module.scss'
 
-export default function ServiceCard({ children }) {
+export default function ServiceCard({ image, title, description, children }) {
 	return (
 		<>
 			<div className={styles.containerCard}>
 				<div className={styles.imgCard}>
-					<img src='../image/static/def.jpg' alt='' />
+					<img src={image} alt={title} />
 				</div>
 				<div className={styles.contentCard}>
 					<div className={styles.titleCard}>
-						<p>Title</p>
+						<p>{title}</p>
 					</div>
 					<div className={styles.descriptionCard}>
-						<p>Description</p>
+						<p>{description}</p>
 					</div>
 					{children}
 				</div>
