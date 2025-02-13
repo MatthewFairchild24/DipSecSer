@@ -2,7 +2,12 @@ import styles from './MainSection.module.scss'
 import Button from '../../components/button/Button'
 import MainCard from '../../components/mainCard/MainCard'
 
+import React, { useState, useEffect } from 'react'
+
 export default function MainSection() {
+	const [cardsData, setCardsData] = useState([])
+	const [images, setImages] = useState([])
+
 	const styleButton = {
 		padding: '0.5rem',
 		backgroundColor: 'rgba(217, 217, 217, 1)',
@@ -11,6 +16,49 @@ export default function MainSection() {
 	const styleMiddleCard = {
 		backgroundColor: 'rgba(112, 112, 112, 1)',
 	}
+
+	useEffect(() => {
+		fetch('https://localhost:7263/api/Advantages')
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error('Connection is falled!')
+				}
+				return response.json()
+			})
+			.then((data) => {
+				setCardsData(data)
+			})
+			.catch((error) => {
+				console.error('Error on database connection', error)
+			})
+
+		fetch('https://localhost:7263/api/Galleries')
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error('Connetction is falled!')
+				}
+				return response.json()
+			})
+			.then((data) => {
+				setImages(data)
+			})
+			.catch((error) => {
+				console.error('Error on database connection', error)
+			})
+	}, [])
+
+	const getImagePathById = (id) => {
+		const image = images.find((img) => img.galleryId === id)
+
+		return image ? image.imagePath : ''
+	}
+
+	const getCard = (card) => {
+		console.log(card)
+		return
+	}
+
+	getCard(cardsData)
 
 	return (
 		<>
@@ -31,9 +79,19 @@ export default function MainSection() {
 						</div>
 					</div>
 					<div className={styles.sectionCard}>
-						<MainCard></MainCard>
+						{cardsData.map((card, index) => (
+							<MainCard
+								key={index}
+								image={getImagePathById(card.galleryId)}
+								title={card.title}
+								description={card.description}
+								style={index === 1 ? styleMiddleCard : {}}
+							/>
+						))}
+
+						{/* <MainCard></MainCard>
 						<MainCard style={styleMiddleCard}></MainCard>
-						<MainCard></MainCard>
+						<MainCard></MainCard> */}
 					</div>
 				</section>
 			</main>
