@@ -9,8 +9,12 @@
 
 	.containerCard {
 		display: flex;
-		gap: 60px;
-		padding-top: 30px;
-		padding-bottom: 40px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.card {
+		padding: 0 5%;
+		margin-bottom: 3%;
+		display: flex;
 	}
 }

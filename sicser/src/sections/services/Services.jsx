@@ -60,40 +60,15 @@ export default function Services() {
 					</div>
 					<div className={styles.containerCard}>
 						{serviceData.map((service, index) => (
-							<ServiceCard
-								key={index}
-								image={getImagePathById(service.galleryId, images)}
-								title={service.title}
-								description={service.description}
-							/>
+							<div className={styles.card} key={index}>
+								<ServiceCard
+									image={getImagePathById(service.galleryId, images)}
+									title={service.title}
+									description={service.description}
+								/>
+							</div>
 						))}
 					</div>
-					{/* <div className={styles.containerCard}>
-						<ServiceCard>
-							<Button style={styleButton}>Подробнее</Button>
-						</ServiceCard>
-
-						<ServiceCard>
-							<Button style={styleButton}>Подробнее</Button>
-						</ServiceCard>
-
-						<ServiceCard>
-							<Button style={styleButton}>Подробнее</Button>
-						</ServiceCard>
-					</div>
-					<div className={styles.containerCard}>
-						<ServiceCard>
-							<Button style={styleButton}>Подробнее</Button>
-						</ServiceCard>
-
-						<ServiceCard>
-							<Button style={styleButton}>Подробнее</Button>
-						</ServiceCard>
-
-						<ServiceCard>
-							<Button style={styleButton}>Подробнее</Button>
-						</ServiceCard>
-					</div> */}
 				</div>
 			</section>
 		</>

@@ -6,7 +6,7 @@ import MainSection from './sections/main-section/MainSection'
 import AboutCompany from './sections/aboutCompany/AboutCompany'
 import BinCon from './components/binCon/BinCon'
 import Services from './sections/services/Services'
-import Test from './sections/TEST/Test'
+import OurProjects from './sections/OurProjects/OurProjects'
 
 function App() {
 	return (
@@ -17,7 +17,10 @@ function App() {
 			<BinCon></BinCon>
 			<AboutCompany></AboutCompany>
 			<Services></Services>
+			<BinCon></BinCon>
+			<OurProjects></OurProjects>
 			{/* <Test></Test> */}
+			
 		</>
 	)
 }
