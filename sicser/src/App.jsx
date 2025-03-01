@@ -6,7 +6,8 @@ import MainSection from './sections/main-section/MainSection'
 import AboutCompany from './sections/aboutCompany/AboutCompany'
 import BinCon from './components/binCon/BinCon'
 import Services from './sections/services/Services'
-import OurProjects from './sections/OurProjects/OurProjects'
+import OurProjects from './sections/ourProjects/OurProjects'
+import Contacts from './sections/contacts/Contacts'
 
 function App() {
 	return (
@@ -19,8 +20,8 @@ function App() {
 			<Services></Services>
 			<BinCon></BinCon>
 			<OurProjects></OurProjects>
-			{/* <Test></Test> */}
-			
+			<BinCon></BinCon>
+			<Contacts></Contacts>
 		</>
 	)
 }

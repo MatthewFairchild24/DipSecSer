@@ -4,7 +4,10 @@ import ImageSlider from '../../components/imageSlider/ImageSlider'
 
 export default function OurProjects() {
 	const slides = [
-		{ url: '../image/SliderProject/image-1.jpg', title: 'river' },
+		{
+			url: 'https://i.pinimg.com/originals/06/90/89/0690892378ea252c9c37173228cff8e4.jpg',
+			title: 'river',
+		},
 		{ url: '../image/SliderProject/image-2.jpg', title: 'forest' },
 		{ url: '../image/SliderProject/image-3.jpg', title: 'city' },
 		{ url: '../image/SliderProject/image-4.jpg', title: 'city1' },
@@ -24,8 +27,9 @@ export default function OurProjects() {
 					<h3 className={styles.titleText}>Наши проекты</h3>
 					<p>Более {GetYearSince2004()} лет дарим людям радость</p>
 				</div>
-
-				<ImageSlider className={styles.containerSlider} slides={slides} />
+				<div className={styles.containerSlider}>
+					<ImageSlider slides={slides} />
+				</div>
 			</section>
 		</>
 	)

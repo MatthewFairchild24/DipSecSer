@@ -1,5 +1,20 @@
-.containerSlider{
-  width: 500px;
-  height: 280px;
-  margin: 0 auto;
+.sliderOP {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+	background-color: #fff;
+
+	.titleOP {
+		padding: 2.5% 0;
+	}
+	.titleOP h3 {
+		padding-bottom: 1%;
+	}
+
+	.containerSlider {
+		width: 500px;
+		height: 280px;
+		margin: 0 auto;
+	}
 }
