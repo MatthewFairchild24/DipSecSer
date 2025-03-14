@@ -1,27 +1,21 @@
 import './App.css'
 
-import Header from './sections/header/Header'
-import TopHeader from './sections/top-header/TopHeader'
-import MainSection from './sections/main-section/MainSection'
-import AboutCompany from './sections/aboutCompany/AboutCompany'
-import BinCon from './components/binCon/BinCon'
-import Services from './sections/services/Services'
-import OurProjects from './sections/ourProjects/OurProjects'
-import Contacts from './sections/contacts/Contacts'
+import AdminPage from './pages/adminPage/AdminPage'
+import MainPage from './pages/mainPage/MainPage'
+import AuthPage from './pages/authPage/AuthPage'
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
 	return (
 		<>
-			<TopHeader></TopHeader>
-			<Header></Header>
-			<MainSection></MainSection>
-			<BinCon></BinCon>
-			<AboutCompany></AboutCompany>
-			<Services></Services>
-			<BinCon></BinCon>
-			<OurProjects></OurProjects>
-			<BinCon></BinCon>
-			<Contacts></Contacts>
+			<Router>
+				<Routes>
+					<Route path='/' element={<MainPage />} />
+					<Route path='/auth' element={<AuthPage />} />
+					<Route path='/admin' element={<AdminPage />} />
+				</Routes>
+			</Router>
 		</>
 	)
 }
