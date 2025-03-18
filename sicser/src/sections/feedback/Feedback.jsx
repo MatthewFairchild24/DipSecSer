@@ -37,7 +37,7 @@ export default function Feedback() {
 			<section className={styles.Contacts}>
 				<div className={styles.titleContacts}>
 					<h3>Contacts</h3>
-					<p>Напишите нам "КУКУ" и мы сдадим вас в дурку</p>
+					<p>Напишите нам "Привет!" и мы обязательно с вами свяжимся</p>
 				</div>
 				<div className={styles.containerAllContacts}>
 					<div className={styles.containerPhoneAddressMail}>

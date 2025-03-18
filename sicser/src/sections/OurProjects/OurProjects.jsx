@@ -4,10 +4,6 @@ import ImageSlider from '../../components/imageSlider/ImageSlider'
 
 export default function OurProjects() {
 	const slides = [
-		{
-			url: 'https://i.pinimg.com/originals/06/90/89/0690892378ea252c9c37173228cff8e4.jpg',
-			title: 'river',
-		},
 		{ url: '../image/SliderProject/image-2.jpg', title: 'forest' },
 		{ url: '../image/SliderProject/image-3.jpg', title: 'city' },
 		{ url: '../image/SliderProject/image-4.jpg', title: 'city1' },
