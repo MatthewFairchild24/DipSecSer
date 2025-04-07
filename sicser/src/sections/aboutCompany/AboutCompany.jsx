@@ -28,7 +28,7 @@ export default function AboutCompany() {
 
 	return (
 		<>
-			<section>
+			<section id='AboutCompany'>
 				<div className={styles.containerAC}>
 					<div className={styles.contentAC}>
 						<div className={styles.textAC}>

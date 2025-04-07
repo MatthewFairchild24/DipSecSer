@@ -53,7 +53,7 @@ export default function Services() {
 
 	return (
 		<>
-			<section className={styles.sectionService}>
+			<section id='Services' className={styles.sectionService}>
 				<div className={styles.contentS}>
 					<div className={styles.titleS}>
 						<h1>Наши услуги</h1>

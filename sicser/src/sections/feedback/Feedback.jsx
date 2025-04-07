@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-
 import axios from 'axios'
-
+import NumberFormat from 'react-number-format'
 import styles from './Feedback.module.scss'
 
 export default function Feedback() {
@@ -32,9 +31,17 @@ export default function Feedback() {
 		borderBottomLeftRadius: '50px',
 	}
 
+	const HandlePhoneChange = (e) => {
+		const value = e.target.value
+		const regex = /^[0-9+\-\(\)\s]*$/
+		if (regex.test(value) && value.length <= 20) {
+			SetPhone(value)
+		}
+	}
+
 	return (
 		<>
-			<section className={styles.Contacts}>
+			<section id='Contacts' className={styles.Contacts}>
 				<div className={styles.titleContacts}>
 					<h3>Contacts</h3>
 					<p>Напишите нам "Привет!" и мы обязательно с вами свяжимся</p>
@@ -71,12 +78,13 @@ export default function Feedback() {
 						</div>
 						<div className={styles.inputGroup}>
 							<label htmlFor='phone'>Телефон:</label>
-							<input
-								type='tel'
+							<NumberFormat
+								format='+7 (###) ###-##-##'
+								mask='-'
 								id='phone'
 								value={phone}
-								placeholder='Введите ваш телефон'
-								onChange={(e) => SetPhone(e.target.value)}
+								placeholder='Ввудите ваш номер телефона'
+								onValueChange={({ value }) => SetPhone(value)}
 								required
 							/>
 						</div>

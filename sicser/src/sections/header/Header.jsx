@@ -12,10 +12,19 @@ export default function Header() {
 				<h3>Secret Service</h3>
 			</div>
 			<ul className={styles.navList}>
-				<li className={styles.navItem}>Главная</li>
-				<li className={styles.navItem}>О Компании</li>
-				<li className={styles.navItem}>Наши услуги</li>
-				<li className={styles.navItem}>Наша работа</li>
+				<li className={styles.navItem}>
+					<a href='#MainSection'>Главная</a>
+				</li>
+
+				<li className={styles.navItem}>
+					<a href='#Services'>Наши услуги</a>
+				</li>
+				<li className={styles.navItem}>
+					<a href='#OurProjects'>Наши проекты</a>
+				</li>
+				<li className={styles.navItem}>
+					<a href='#Contacts'>Обратная связь</a>
+				</li>
 			</ul>
 			<Button>Заказать звонок</Button>
 		</header>

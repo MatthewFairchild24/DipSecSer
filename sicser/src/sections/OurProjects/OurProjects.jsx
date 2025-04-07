@@ -18,7 +18,7 @@ export default function OurProjects() {
 
 	return (
 		<>
-			<section className={styles.sliderOP}>
+			<section id='OurProjects' className={styles.sliderOP}>
 				<div className={styles.titleOP}>
 					<h3 className={styles.titleText}>Наши проекты</h3>
 					<p>Более {GetYearSince2004()} лет дарим людям радость</p>

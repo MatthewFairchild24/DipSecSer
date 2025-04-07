@@ -56,7 +56,7 @@ export default function MainSection() {
 	return (
 		<>
 			<main>
-				<section className={styles.containerForImg}>
+				<section id='MainSection' className={styles.containerForImg}>
 					<div className={styles.imgBack}>
 						<div className={styles.containerContent}>
 							<div className={styles.containerTitle}>
@@ -66,9 +66,9 @@ export default function MainSection() {
 								<h1>Строим будущее, создаем комфорт!</h1>
 							</div>
 
-							<Button style={styleButton}>
+							{/* <Button style={styleButton}>
 								<a href='#'>Наши услуги</a>
-							</Button>
+							</Button> */}
 						</div>
 					</div>
 					<div className={styles.sectionCard}>
