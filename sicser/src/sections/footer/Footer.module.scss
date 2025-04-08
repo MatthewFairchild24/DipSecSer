@@ -1,0 +1,63 @@
+.Footer {
+	background-color: #2c3e50;
+	display: flex;
+	justify-content: space-around;
+	padding: 5% 3% 2%;
+
+	h3 {
+		color: #d3d3d3;
+	}
+
+	p {
+		color: #a7a7a7;
+		padding-bottom: 1%;
+	}
+
+	.containerForIcon {
+		.logo {
+			display: flex;
+			align-items: center;
+		}
+
+		.logo img {
+			height: 100px;
+			width: auto;
+			padding-right: 1rem;
+			transition: transform 0.3s;
+		}
+	}
+	.containerForNavigate {
+		.navList {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+
+			margin: 0;
+			padding: 0;
+
+			.navItem {
+				cursor: pointer;
+				transition: color 0.3s;
+				font-size: large;
+			}
+
+			.navItem a {
+				text-decoration: none;
+				color: #a7a7a7;
+			}
+
+			.navItem a:hover {
+				color: #ff8900;
+			}
+		}
+	}
+	.containerForContacts {
+		.contactPhone {
+			margin-top: 4%;
+		}
+		.contactEmail {
+			margin-top: 4%;
+		}
+	}
+}
+

@@ -1,6 +1,7 @@
 import styles from './AuthPage.module.scss'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Button from '../../components/button/Button'
 
 export default function AuthPage() {
 	const [username, setUsername] = useState('')
@@ -35,13 +36,13 @@ export default function AuthPage() {
 						<div>
 							<label> Пароль: </label>
 							<input
-								type='text'
+								type='password'
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
 								required
 							/>
 						</div>
-						<button type='submit'>Войти</button>
+						<Button type='submit'>Войти</Button>
 					</form>
 				</div>
 			</section>

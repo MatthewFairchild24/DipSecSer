@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import styles from './Feedback.module.scss'
 import useApiUrl from '../../hooks/useApiUrl'
+import Button from '../../components/button/Button'
 
 export default function Feedback() {
 	const [name, setName] = useState('')
@@ -92,7 +93,7 @@ export default function Feedback() {
 					<p>Напишите нам вашу проблему и мы обязательно с вами свяжемся</p>
 				</div>
 				<div className={styles.containerAllContacts}>
-					<div className={styles.containerPhoneAddressMail}>
+					{/* <div className={styles.containerPhoneAddressMail}>
 						<div className={styles.containerContent} style={stylePhone}>
 							<p>Телефон</p>
 							<p>{dataContacts.phone}</p>
@@ -105,7 +106,7 @@ export default function Feedback() {
 							<p>E-mail</p>
 							<p>{dataContacts.email}</p>
 						</div>
-					</div>
+					</div> */}
 					<form className={styles.containerFeedback} onSubmit={handleSubmit}>
 						<div className={styles.inputGroup}>
 							<label htmlFor='name'>Имя:</label>
@@ -139,9 +140,10 @@ export default function Feedback() {
 								required
 							></textarea>
 						</div>
-						<button type='submit' disabled={!isFormValid}>
+
+						<Button type='submit' disabled={!isFormValid}>
 							Отправить сообщение
-						</button>
+						</Button>
 						<div className={styles.attention}>
 							&#9432; Нажимая на кнопку вы выражаете согласие с политикой
 							конфиденциальности и правилами обработки персональных данных

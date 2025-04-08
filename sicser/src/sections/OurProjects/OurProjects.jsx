@@ -4,9 +4,8 @@ import ImageSlider from '../../components/imageSlider/ImageSlider'
 
 export default function OurProjects() {
 	const slides = [
-		{ url: '../image/SliderProject/image-2.jpg', title: 'forest' },
-		{ url: '../image/SliderProject/image-3.jpg', title: 'city' },
-		{ url: '../image/SliderProject/image-4.jpg', title: 'city1' },
+		{ url: '../image/SliderProject/image-1.jpg', title: 'build' },
+		{ url: '../image/SliderProject/image-2.jpg', title: 'build' },
 		{ url: '../image/SliderProject/image-5.jpg', title: 'build' },
 	]
 

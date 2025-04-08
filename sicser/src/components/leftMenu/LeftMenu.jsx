@@ -4,15 +4,15 @@ import { useNavigate } from 'react-router-dom'
 
 export default function LeftMenu({ setActiveComponent }) {
 	const styleButton = {
-		backgroundColor: '#d9d9d9', 
-		padding: '4px 8px', 
-		margin: '0', 
-		border: 'none', 
-		borderRadius: '4px', 
+		backgroundColor: '#d9d9d9',
+		padding: '4px 8px',
+		margin: '0',
+		border: 'none',
+		borderRadius: '4px',
 		cursor: 'pointer',
-		fontSize: '12px', 
-		opacity: 0.7, 
-		transition: 'opacity 0.3s', 
+		fontSize: '12px',
+		opacity: 0.7,
+		transition: 'opacity 0.3s',
 	}
 
 	const navigate = useNavigate()
@@ -33,7 +33,7 @@ export default function LeftMenu({ setActiveComponent }) {
 					<div className={styles.imgContainer}>
 						<img src='../../../public/image/static/def.jpg' alt='' />
 					</div>
-					<div className={styles.NameContainer}>test testovich</div>
+					<div className={styles.NameContainer}>Конев Иван Владимирович</div>
 				</div>
 				<div className={styles.menuContainer}>
 					<p>Меню</p>

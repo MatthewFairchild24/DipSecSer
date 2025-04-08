@@ -8,6 +8,7 @@ import Services from '../../sections/services/Services'
 import OurProjects from '../../sections/ourProjects/OurProjects'
 import Feedback from '../../sections/feedback/Feedback'
 import AboutCompany from '../../sections/aboutCompany/AboutCompany'
+import Footer from '../../sections/footer/Footer'
 
 export default function MainPage() {
 	return (
@@ -22,6 +23,7 @@ export default function MainPage() {
 			<OurProjects></OurProjects>
 			<BinCon></BinCon>
 			<Feedback></Feedback>
+			<Footer></Footer>
 		</>
 	)
 }
