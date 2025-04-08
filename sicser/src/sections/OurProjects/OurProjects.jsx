@@ -6,7 +6,10 @@ export default function OurProjects() {
 	const slides = [
 		{ url: '../image/SliderProject/image-1.jpg', title: 'build' },
 		{ url: '../image/SliderProject/image-2.jpg', title: 'build' },
+		{ url: '../image/SliderProject/image-3.jpg', title: 'build' },
+		{ url: '../image/SliderProject/image-4.jpg', title: 'build' },
 		{ url: '../image/SliderProject/image-5.jpg', title: 'build' },
+		{ url: '../image/SliderProject/image-6.jpg', title: 'build' },
 	]
 
 	const GetYearSince2004 = () => {
