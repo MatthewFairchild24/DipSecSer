@@ -1,24 +1,21 @@
 import styles from './MainSection.module.scss'
-import Button from '../../components/button/Button'
+
 import MainCard from '../../components/mainCard/MainCard'
 
 import React, { useState, useEffect } from 'react'
+import useApiUrl from '../../hooks/useApiUrl'
 
 export default function MainSection() {
 	const [cardsData, setCardsData] = useState([])
 	const [images, setImages] = useState([])
+	const { getApiUrl } = useApiUrl()
 
-	const styleButton = {
-		padding: '0.5rem',
-		backgroundColor: 'rgba(217, 217, 217, 1)',
-		marginTop: '3rem',
-	}
 	const styleMiddleCard = {
 		backgroundColor: 'rgb(146, 146, 146)',
 	}
 
 	useEffect(() => {
-		fetch('https://localhost:7263/api/Advantages')
+		fetch(getApiUrl('Advantages'))
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error('Connection is falled!')
@@ -32,7 +29,7 @@ export default function MainSection() {
 				console.error('Error on database connection', error)
 			})
 
-		fetch('https://localhost:7263/api/Galleries')
+		fetch(getApiUrl('Galleries'))
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error('Connetction is falled!')

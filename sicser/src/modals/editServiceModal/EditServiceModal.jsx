@@ -1,6 +1,6 @@
 import styles from '../editServiceModal/EditServiceModal.module.scss'
 
-import React, { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 
 export default function EditServiceModal({ service, onClose, onSave }) {
 	const [editService, setEditService] = useState({

@@ -1,18 +1,18 @@
 import axios from 'axios'
 import './TopHeader.scss'
-import React from 'react'
 import { useState, useEffect } from 'react'
+import useApiUrl from '../../hooks/useApiUrl'
 
 export default function TopHeader() {
 	const [data, setData] = useState([])
 	const [error, setError] = useState(null)
+	const { getApiUrl } = useApiUrl()
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get(
-					'https://localhost:7263/api/Contacts/1'
-				)
+				const url = getApiUrl('Contacts/1')
+				const response = await axios.get(url)
 				setData(response.data)
 			} catch (error) {
 				setError(error.message)

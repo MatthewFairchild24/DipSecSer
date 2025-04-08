@@ -1,8 +1,9 @@
-import styles from '../listUsers/ListUsers'
+import styles from '../listUsers/ListUsers.module.scss'
 import EditUserModal from '../../modals/editUserModal/EditUserModal'
 import AddUserModal from '../../modals/addUserModal/AddUserModal'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import useApiUrl from '../../hooks/useApiUrl'
 
 export default function ListUsers() {
 	const [users, setUsers] = useState([])
@@ -11,11 +12,12 @@ export default function ListUsers() {
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 	const [currentUser, setCurrentUser] = useState(null)
+	const { getApiUrl } = useApiUrl()
 
 	useEffect(() => {
 		const fetchServices = async () => {
 			try {
-				const response = await fetch('https://localhost:7263/api/Users') //
+				const response = await fetch(getApiUrl('Users'))
 				if (!response.ok) {
 					throw new Error('Network response was not ok')
 				}
@@ -34,7 +36,7 @@ export default function ListUsers() {
 	const HandleDelete = async (id) => {
 		if (window.confirm('Вы уверены, что хотите удалить этого пользователя?'))
 			try {
-				await fetch(`https://localhost:7263/api/Users/${id}`, {
+				await fetch(getApiUrl(`Users/${id}`), {
 					method: 'DELETE',
 				})
 				setFeedbacks(users.filter((f) => users.id != id))
@@ -50,16 +52,13 @@ export default function ListUsers() {
 
 	const handleSave = async (editedUser) => {
 		try {
-			const response = await fetch(
-				`https://localhost:7263/api/Users/${editedUser.id}`,
-				{
-					method: 'PUT',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(editedUser),
-				}
-			)
+			const response = await fetch(getApiUrl(`Users/${editedUser.id}`), {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(editedUser),
+			})
 			if (!response.ok) {
 				throw new Error('Ошибка при обновлении пользователя')
 			}
@@ -81,16 +80,13 @@ export default function ListUsers() {
 
 	const handleAdd = async (newUser) => {
 		try {
-			const response = await fetch(
-				'https://localhost:7263/api/Users/register',
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(newUser),
-				}
-			)
+			const response = await fetch(getApiUrl('Users/register'), {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(newUser),
+			})
 			if (!response.ok) {
 				throw new Error('Ошибка при добавлении услуги')
 			}

@@ -1,5 +1,5 @@
 import styles from '../addUserModal/AddUserModal.module.scss'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 export default function AddUserModal({ onClose, onAdd }) {
 	const [newUser, setNewUser] = useState({

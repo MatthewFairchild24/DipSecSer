@@ -1,6 +1,6 @@
 import styles from '../editProjectModal/EditProjectModal.module.scss'
 
-import React, { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 
 export default function EditProjectModal({ project, onClose, onSave }) {
 	const [editProject, setEditProject] = useState({

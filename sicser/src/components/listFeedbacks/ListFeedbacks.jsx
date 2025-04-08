@@ -1,16 +1,18 @@
 import styles from '../listFeedbacks/listFeedbacks.module.scss'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import useApiUrl from '../../hooks/useApiUrl'
 
 export default function ListFeedback() {
 	const [feedbacks, setFeedbacks] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
+	const { getApiUrl } = useApiUrl()
 
 	useEffect(() => {
 		const fetchServices = async () => {
 			try {
-				const response = await fetch('https://localhost:7263/api/Feedbacks') //
+				const response = await fetch(getApiUrl('Feedbacks'))
 				if (!response.ok) {
 					throw new Error('Network response was not ok')
 				}
@@ -29,7 +31,7 @@ export default function ListFeedback() {
 	const HandleDelete = async (id) => {
 		if (window.confirm('Вы уверены, что хотите удалить этот отклик?'))
 			try {
-				await fetch(`https://localhost:7263/api/Feedback/${id}`, {
+				await fetch(getApiUrl(`Feedbacks/${id}`), {
 					method: 'DELETE',
 				})
 				setFeedbacks(feedbacks.filter((f) => feedbacks.id != id))

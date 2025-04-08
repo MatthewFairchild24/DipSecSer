@@ -1,13 +1,14 @@
 import styles from './Services.module.scss'
 
-import Button from '../../components/button/Button'
 import ServiceCard from '../../components/serviceCard/ServiceCard'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import useApiUrl from '../../hooks/useApiUrl'
 
 export default function Services() {
 	const [serviceData, setServiceData] = useState([])
 	const [images, setImages] = useState([])
+	const { getApiUrl } = useApiUrl()
 
 	const styleButton = {
 		backgroundColor: '#d9d9d9',
@@ -16,7 +17,7 @@ export default function Services() {
 	}
 
 	useEffect(() => {
-		fetch('https://localhost:7263/api/Services')
+		fetch(getApiUrl('Services'))
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error('Connection is falled!')
@@ -30,7 +31,7 @@ export default function Services() {
 				console.error('Error database connection', error)
 			})
 
-		fetch('https://localhost:7263/api/Galleries')
+		fetch(getApiUrl('Galleries'))
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error('Connection is falled!')

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import styles from '../listGalleries/ListGalleries.module.scss'
 import EditGalleryModal from '../../modals/editGalleryModal/EditGalleryModal'
 import AddGalleryModal from '../../modals/addGalleryModal/AddGalleryModal'
+import useApiUrl from '../../hooks/useApiUrl'
 
 export default function ListGalleries() {
 	const [galleries, setGalleries] = useState([])
@@ -11,11 +12,12 @@ export default function ListGalleries() {
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 	const [currentGallery, setCurrentGallery] = useState(null)
+	const { getApiUrl } = useApiUrl()
 
 	useEffect(() => {
 		const fetchServices = async () => {
 			try {
-				const response = await fetch('https://localhost:7263/api/Galleries') //
+				const response = await fetch(getApiUrl('galleries')) //
 				if (!response.ok) {
 					throw new Error('Network response was not ok')
 				}
@@ -34,7 +36,7 @@ export default function ListGalleries() {
 	const HandleDelete = async (id) => {
 		if (window.confirm('Вы уверены, что хотите удалить эту фотографию?'))
 			try {
-				await fetch(`https://localhost:7263/api/Feedback/${id}`, {
+				await fetch(getApiUrl(`Galleries/${id}`), {
 					method: 'DELETE',
 				})
 				setGalleries(galleries.filter((g) => galleries.id != id))
@@ -50,16 +52,13 @@ export default function ListGalleries() {
 
 	const handleSave = async (editedGallery) => {
 		try {
-			const response = await fetch(
-				`https://localhost:7263/api/Galleries/${editedGallery.id}`,
-				{
-					method: 'PUT',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(editedGallery),
-				}
-			)
+			const response = await fetch(getApiUrl(`Galleries/${editedGallery.id}`), {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(editedGallery),
+			})
 			if (!response.ok) {
 				throw new Error('Ошибка при обновлении услуги')
 			}
@@ -82,16 +81,13 @@ export default function ListGalleries() {
 			formData.append('description', newGallery.description)
 			formData.append('image', imageFile)
 
-			const response = await fetch(
-				'https://localhost:7263/api/Galleries/upload',
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: formData,
-				}
-			)
+			const response = await fetch(getApiUrl('Galleries/upload'), {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: formData,
+			})
 			if (!response.ok) {
 				throw new Error('Ошибка при добавлении картинки')
 			}

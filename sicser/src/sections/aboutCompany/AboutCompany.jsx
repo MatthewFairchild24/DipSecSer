@@ -1,15 +1,19 @@
 import styles from './AboutCompany.module.scss'
 import React, { useState, useEffect } from 'react'
+import useApiUrl from '../../hooks/useApiUrl'
 
 export default function AboutCompany() {
 	const [images, setImages] = useState([])
 	const [filtAC, setFiltAC] = useState([])
 	const [filtAC1, setFiltAC1] = useState([])
 
+	const { getApiUrl } = useApiUrl()
+
 	useEffect(() => {
 		const fetchImages = async () => {
 			try {
-				const response = await fetch('https://localhost:7263/api/Galleries')
+				const url = getApiUrl('Galleries')
+				const response = await fetch(url)
 				const data = await response.json()
 				setImages(data)
 			} catch (error) {

@@ -1,5 +1,5 @@
 import styles from '../addServiceModal/AddServiceModal.module.scss'
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 export default function AddServiceModal({ onClose, onAdd }) {
 	const [newService, setNewService] = useState({

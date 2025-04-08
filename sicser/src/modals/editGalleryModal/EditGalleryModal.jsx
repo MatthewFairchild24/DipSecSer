@@ -1,6 +1,6 @@
 import styles from '../editGalleryModal/EditGalleryModal.module.scss'
 
-import React, { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 
 export default function EditGalleryModal({ gallery, onClose, onSave }) {
 	const [editGallery, setEditGallery] = useState({

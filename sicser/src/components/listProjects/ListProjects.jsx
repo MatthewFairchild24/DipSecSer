@@ -2,7 +2,8 @@ import EditProjectModal from '../../modals/editProjectModal/EditProjectModal'
 import AddProjectModal from '../../modals/addProjectModal/AddProjectModal'
 
 import styles from '../listProjects/listProjects.module.scss'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import useApiUrl from '../../hooks/useApiUrl'
 
 export default function ListProjects() {
 	const [projects, setProjects] = useState([])
@@ -11,11 +12,12 @@ export default function ListProjects() {
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 	const [currentProject, setCurrentProject] = useState(null)
+	const { getApiUrl } = useApiUrl()
 
 	useEffect(() => {
 		const fetchServices = async () => {
 			try {
-				const response = await fetch('https://localhost:7263/api/Projects') //
+				const response = await fetch(getApiUrl('Projects')) //
 				if (!response.ok) {
 					throw new Error('Network response was not ok')
 				}
@@ -34,7 +36,7 @@ export default function ListProjects() {
 	const HandleDelete = async (id) => {
 		if (window.confirm('Вы уверены, что хотите удалить этот проект?'))
 			try {
-				await fetch(`https://localhost:7263/api/Projects/${id}`, {
+				await fetch(getApiUrl(`Projects/${id}`), {
 					method: 'DELETE',
 				})
 				setProjects(projects.filter((project) => project.id != id))
@@ -50,16 +52,13 @@ export default function ListProjects() {
 
 	const handleSave = async (editedProject) => {
 		try {
-			const response = await fetch(
-				`https://localhost:7263/api/Projects/${editedProject.id}`,
-				{
-					method: 'PUT',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(editedProject),
-				}
-			)
+			const response = await fetch(getApiUrl(`Projects/${editedProject.id}`), {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(editedProject),
+			})
 			if (!response.ok) {
 				throw new Error('Ошибка при обновлении услуги')
 			}
@@ -77,16 +76,13 @@ export default function ListProjects() {
 
 	const handleAdd = async (newProject) => {
 		try {
-			const response = await fetch(
-				'https://localhost:7263/api/Projects/uploadProject',
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(newProject),
-				}
-			)
+			const response = await fetch(getApiUrl('Projects/uploadProject'), {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(newProject),
+			})
 			if (!response.ok) {
 				throw new Error('Ошибка при добавлении проекта')
 			}

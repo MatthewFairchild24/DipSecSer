@@ -1,6 +1,6 @@
 import styles from '../editUserModal/EditUserModal.module.scss'
 
-import React, { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 
 export default function EditUserModal({ user, onClose, onSave }) {
 	const [editUser, setEditUser] = useState({

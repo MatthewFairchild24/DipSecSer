@@ -1,5 +1,5 @@
 import styles from '../addGalleryModal/AddGalleryModal.module.scss' // Исправлено на .module.scss
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 export default function AddGalleryModal({ onClose, onAdd }) {
 	const [newGallery, setNewGallery] = useState({

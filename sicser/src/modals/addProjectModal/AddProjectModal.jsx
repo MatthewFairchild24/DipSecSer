@@ -1,5 +1,5 @@
 import styles from '../addProjectModal/AddProjectModal.module.scss'
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 export default function AddProjectModal({ onClose, onAdd }) {
 	const [newProject, setNewProject] = useState({

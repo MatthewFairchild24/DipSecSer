@@ -1,23 +1,42 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import NumberFormat from 'react-number-format'
 import styles from './Feedback.module.scss'
+import useApiUrl from '../../hooks/useApiUrl'
 
 export default function Feedback() {
-	const [name, SetName] = useState('')
-	const [description, SetDescription] = useState('')
-	const [phone, SetPhone] = useState('')
+	const [name, setName] = useState('')
+	const [description, setDescription] = useState('')
+	const [phone, setPhone] = useState('')
+	const [dataContacts, setDataContacts] = useState([])
+
+	const { getApiUrl } = useApiUrl()
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const url = getApiUrl('Contacts/1')
+				const response = await axios.get(url)
+				setDataContacts(response.data)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+		fetchData()
+	}, [])
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		const feedback = { name, description, phone }
 
 		try {
-			const response = await axios.post(
-				'https://localhost:7263/api/Feedbacks',
-				feedback
-			)
+			const url = getApiUrl('Feedbacks')
+			const response = await axios.post(url, feedback)
 			console.log(response.data)
+
+			// Очистка полей после успешной отправки
+			setName('')
+			setDescription('')
+			setPhone('')
 		} catch (error) {
 			console.error('Ошибка при отправке данных: ', error)
 		}
@@ -31,37 +50,60 @@ export default function Feedback() {
 		borderBottomLeftRadius: '50px',
 	}
 
-	const HandlePhoneChange = (e) => {
-		const value = e.target.value
-		const regex = /^[0-9+\-\(\)\s]*$/
-		if (regex.test(value) && value.length <= 20) {
-			SetPhone(value)
+	const handlePhoneChange = (e) => {
+		const input = e.target.value
+
+		let cleaned = input.replace(/\D/g, '')
+
+		let formatted = ''
+
+		if (cleaned.length > 0) {
+			if (cleaned[0] === '8' || cleaned[0] === '7') {
+				formatted += '+7 '
+				cleaned = cleaned.substring(1)
+			} else {
+				formatted += '+7 '
+			}
 		}
+		if (cleaned.length > 0) {
+			formatted += '(' + cleaned.substring(0, 3)
+		}
+		if (cleaned.length >= 3) {
+			formatted += ') ' + cleaned.substring(3, 6)
+		}
+		if (cleaned.length >= 6) {
+			formatted += '-' + cleaned.substring(6, 8)
+		}
+		if (cleaned.length >= 8) {
+			formatted += '-' + cleaned.substring(8, 10)
+		}
+
+		setPhone(formatted)
 	}
+
+	const isFormValid =
+		name.trim() !== '' && phone.trim() !== '' && description.trim() !== ''
 
 	return (
 		<>
 			<section id='Contacts' className={styles.Contacts}>
 				<div className={styles.titleContacts}>
-					<h3>Contacts</h3>
-					<p>Напишите нам "Привет!" и мы обязательно с вами свяжимся</p>
+					<h3>Обратная связь</h3>
+					<p>Напишите нам вашу проблему и мы обязательно с вами свяжемся</p>
 				</div>
 				<div className={styles.containerAllContacts}>
 					<div className={styles.containerPhoneAddressMail}>
 						<div className={styles.containerContent} style={stylePhone}>
 							<p>Телефон</p>
-							<p>PhoneNumber</p>
-							<a href=''>Позвонить нам</a>
+							<p>{dataContacts.phone}</p>
 						</div>
 						<div className={styles.containerContent}>
 							<p>Адрес</p>
-							<p>Address</p>
-							<a href=''>Открыть карту</a>
+							<p>г.Курск ул.Радищева 24</p>
 						</div>
 						<div className={styles.containerContent} style={styleMail}>
 							<p>E-mail</p>
-							<p>email@gmail.com</p>
-							<a href=''>Написать нам</a>
+							<p>{dataContacts.email}</p>
 						</div>
 					</div>
 					<form className={styles.containerFeedback} onSubmit={handleSubmit}>
@@ -72,19 +114,18 @@ export default function Feedback() {
 								id='name'
 								value={name}
 								placeholder='Введите ваше имя'
-								onChange={(e) => SetName(e.target.value)}
+								onChange={(e) => setName(e.target.value)}
 								required
 							/>
 						</div>
 						<div className={styles.inputGroup}>
 							<label htmlFor='phone'>Телефон:</label>
-							<NumberFormat
-								format='+7 (###) ###-##-##'
-								mask='-'
+							<input
+								type='text'
 								id='phone'
 								value={phone}
-								placeholder='Ввудите ваш номер телефона'
-								onValueChange={({ value }) => SetPhone(value)}
+								placeholder='Введите ваш номер телефона'
+								onChange={handlePhoneChange}
 								required
 							/>
 						</div>
@@ -94,11 +135,13 @@ export default function Feedback() {
 								id='message'
 								value={description}
 								placeholder='Введите ваше сообщение'
-								onChange={(e) => SetDescription(e.target.value)}
+								onChange={(e) => setDescription(e.target.value)}
 								required
 							></textarea>
 						</div>
-						<button type='submit'>Отправить сообщение</button>
+						<button type='submit' disabled={!isFormValid}>
+							Отправить сообщение
+						</button>
 						<div className={styles.attention}>
 							&#9432; Нажимая на кнопку вы выражаете согласие с политикой
 							конфиденциальности и правилами обработки персональных данных

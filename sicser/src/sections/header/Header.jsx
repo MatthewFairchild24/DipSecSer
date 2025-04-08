@@ -1,7 +1,15 @@
 import styles from './Header.module.scss'
 import Button from '../../components/button/Button'
 
+import { useNavigate } from 'react-router-dom'
+
 export default function Header() {
+	const navigate = useNavigate()
+
+	const handleSubmit = () => {
+		navigate('/auth')
+	}
+
 	return (
 		<header className={styles.header}>
 			<div className={styles.logoName}>
@@ -26,7 +34,7 @@ export default function Header() {
 					<a href='#Contacts'>Обратная связь</a>
 				</li>
 			</ul>
-			<Button>Заказать звонок</Button>
+			<Button onClick={handleSubmit}>Перейти в админ панель</Button>
 		</header>
 	)
 }

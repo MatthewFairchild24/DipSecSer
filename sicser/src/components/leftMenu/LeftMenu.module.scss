@@ -1,13 +1,19 @@
 .leftMenu {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+
 	background-color: #2c3e50;
 	padding: 20px;
-	width: 250px;
+
+	min-width: 250px;
 	height: 100vh;
 	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 	color: #fff;
+
+	.buttonBack {
+		display: flex;
+		align-items: start;
+	}
 
 	.containerForAvatar {
 		display: flex;

@@ -1,0 +1,35 @@
+.listService {
+	padding: 20px;
+
+	background-color: #f9f9f9;
+	border-radius: 8px;
+
+	h2 {
+		margin-bottom: 20px;
+	}
+	.tableContainer {
+		overflow-x: auto;
+		margin-top: 10px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		border-radius: 8px;
+		max-width: 100%;
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+
+			thead {
+				background-color: #ff8900;
+				color: white;
+			}
+
+			th,
+			td {
+				padding: 12px;
+
+				text-align: left;
+				border-bottom: 1px solid #ddd;
+			}
+		}
+	}
+}
