@@ -1,0 +1,27 @@
+.ServiceDetailed {
+	padding: 3%;
+
+	.mainContainer {
+		display: flex;
+		flex-direction: column;
+		.fstContainer {
+			display: flex;
+			flex-direction: row;
+			padding-bottom: 3%;
+			.fstTextContainer {
+			}
+			.fstImageContainer {
+			}
+		}
+
+		.scdContainer {
+			display: flex;
+			flex-direction: row;
+			.scdImageContainer {
+			}
+
+			.scdTextContainer {
+			}
+		}
+	}
+}

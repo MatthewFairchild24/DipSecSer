@@ -7,34 +7,52 @@
 	max-width: 300px;
 	transition: transform 0.2s;
 	position: relative;
-}
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 
-.imgCard {
-	position: absolute;
-	top: 15px;
-	left: 15px;
-}
+	.imgCard {
+		position: absolute;
+		top: 15px;
+		left: 15px;
+	}
 
-.imgCard img {
-	width: 50px;
-	height: 50px;
-	object-fit: cover;
-}
+	.imgCard img {
+		width: 50px;
+		height: 50px;
+		object-fit: cover;
+	}
 
-.contentCard {
-	padding: 15px;
-	padding-top: 80px;
-}
+	.contentCard {
+		flex: 1;
+		padding: 15px;
+		padding-top: 80px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 
-.titleCard {
-	font-size: 1.5rem;
-	margin: 0;
-	color: #333;
-}
-
-.descriptionCard {
-	font-size: 1rem;
-	color: #666;
-	margin-top: 10px;
-	margin-bottom: 10px;
+		.titleCard {
+			font-size: 1.5rem;
+			margin: 0;
+			color: #333;
+		}
+		.descriptionCard {
+			font-size: 1rem;
+			color: #666;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		.buttonContainer {
+			display: flex;
+			justify-content: flex-start;
+			margin-top: auto;
+		}
+	}
+	button {
+		margin-top: auto;
+		background-color: #d9d9d9;
+		padding: 8px;
+		border: none;
+		cursor: pointer;
+	}
 }

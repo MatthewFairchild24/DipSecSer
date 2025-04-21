@@ -22,7 +22,7 @@ export default function OurProjects() {
 		<>
 			<section id='OurProjects' className={styles.sliderOP}>
 				<div className={styles.titleOP}>
-					<h3 className={styles.titleText}>Наши проекты</h3>
+					<h3 className={styles.titleText}>Фото наших работ</h3>
 					<p>Более {GetYearSince2004()} лет дарим людям радость</p>
 				</div>
 				<div className={styles.containerSlider}>

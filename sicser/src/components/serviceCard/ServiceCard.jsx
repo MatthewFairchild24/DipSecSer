@@ -1,4 +1,5 @@
 import styles from './ServiceCard.module.scss'
+import Button from '../button/Button'
 
 export default function ServiceCard({ image, title, description, children }) {
 	return (
@@ -14,7 +15,7 @@ export default function ServiceCard({ image, title, description, children }) {
 					<div className={styles.descriptionCard}>
 						<p>{description}</p>
 					</div>
-					{children}
+					<div className={styles.buttonContainer}>{children}</div>
 				</div>
 			</div>
 		</>

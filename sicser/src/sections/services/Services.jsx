@@ -4,6 +4,7 @@ import ServiceCard from '../../components/serviceCard/ServiceCard'
 
 import { useState, useEffect } from 'react'
 import useApiUrl from '../../hooks/useApiUrl'
+import { Link } from 'react-router-dom'
 
 export default function Services() {
 	const [serviceData, setServiceData] = useState([])
@@ -66,7 +67,11 @@ export default function Services() {
 									image={getImagePathById(service.galleryId, images)}
 									title={service.title}
 									description={service.description}
-								/>
+								>
+									<Link to={`/service/${service.id}`}>
+										<button style={styleButton}>Подробнее</button>
+									</Link>
+								</ServiceCard>
 							</div>
 						))}
 					</div>

@@ -25,7 +25,7 @@ export default function Footer() {
 			<section className={styles.Footer}>
 				<div className={styles.containerForIcon}>
 					<div className={styles.logo}>
-						<img src='./image/static/try2-back.png' alt='Waiting...' />
+						<img src='../image/static/try2-back.png' alt='Waiting...' />
 						<h3>Secret Service</h3>
 					</div>
 					<p>ИП Хомутов Дмитрий Юрьевич</p>
