@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import styles from './ImageSlider.module.scss'
 
@@ -16,6 +16,14 @@ export default function ImageSlider({ slides }) {
 		const newIndex = isLastSlide ? 0 : currentIndex + 1
 		setCurrentIndex(newIndex)
 	}
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			goToNext()
+		}, 8000)
+
+		return () => clearInterval(interval)
+	}, [currentIndex])
 
 	const goToSlide = (slideIndex) => {
 		setCurrentIndex(slideIndex)
@@ -39,12 +47,22 @@ export default function ImageSlider({ slides }) {
 				<div className={styles.leftArrow} onClick={goToNext}>
 					&#11207;
 				</div>
-				<div style={slideStyles}></div>
+
+				<div
+					className={styles.slide}
+					style={{
+						backgroundImage: `url(${slides[currentIndex].url})`,
+						transition: 'opacity 0.5s ease-in-out',
+						opacity: 1,
+					}}
+				></div>
 
 				<div className={styles.containerDots}>
 					{slides.map((slide, slideIndex) => (
 						<div
-							className={styles.dot}
+							className={`${styles.dot} ${
+								slideIndex === currentIndex ? styles.active : ''
+							}`}
 							key={slideIndex}
 							onClick={() => goToSlide(slideIndex)}
 						>

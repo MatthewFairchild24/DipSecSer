@@ -1,10 +1,16 @@
 .sectionService {
 	display: flex;
 	justify-content: center;
+	padding: 3% 1% 5%;
 
 	.titleS {
 		text-align: center;
 		padding: 40px 0 10px;
+
+		h1 {
+			font-size: 32px;
+			padding-bottom: 2%;
+		}
 	}
 
 	.containerCard {

@@ -6,48 +6,44 @@ import useApiUrl from '../../hooks/useApiUrl'
 export default function ServiceDetail() {
 	const { id } = useParams()
 	const [serviceDetailed, setServiceDetailed] = useState(null)
-	const [images, setImages] = useState([])
+	const [image1, setImage1] = useState('')
+	const [image2, setImage2] = useState('')
 	const { getApiUrl } = useApiUrl()
 
 	useEffect(() => {
-		fetch(getApiUrl(`ServiceDetailedes/${id}`))
-			.then((response) => {
+		const fetchServiceDetails = async () => {
+			try {
+				const response = await fetch(getApiUrl(`ServiceDetailedes/${id}`))
 				if (!response.ok) {
-					throw new Error('Connection failed!')
+					throw new Error('Connection failed! ', response.statusText)
 				}
-				return response.json()
-			})
-			.then((data) => {
+				const data = await response.json()
 				setServiceDetailed(data)
-			})
-			.catch((error) => {
-				console.error('Error fetchiong service detailed', error)
-			})
-
-		fetch(getApiUrl('Galleries'))
-			.then((response) => {
+			} catch (error) {
+				console.error('Error fetching service details', error)
+			}
+		}
+		const fetchGallery = async () => {
+			try {
+				const response = await fetch(getApiUrl(`Galleries/${1}`))
 				if (!response.ok) {
-					throw new Error('Connection failed!')
+					throw new Error(`Connection failed! ${response.statusText}`)
 				}
-				return response.json()
-			})
-			.then((data) => {
-				setImages(data)
-			})
-			.catch((error) => {
-				console.error('Error on database connection ', error)
-			})
+				const data = await response.json()
+				setImage1(data.imagePath)
+				setImage2(data.imagePath)
+			} catch (error) {
+				console.error('Error fetching service details', error)
+			}
+		}
+		fetchServiceDetails()
+		fetchGallery()
 	}, [id, getApiUrl])
 
 	if (!serviceDetailed) {
 		return <div>Loading...</div>
 	}
 
-	const getImagePathById = (id, images) => {
-		const image = images.find((img) => img.id === id)
-
-		return image ? image.imagePath : ''
-	}
 	return (
 		<>
 			<section className={styles.ServiceDetailed}>
@@ -58,21 +54,16 @@ export default function ServiceDetail() {
 							<p>{serviceDetailed.description}</p>
 						</div>
 						<div className={styles.fstImageContainer}>
-							<img
-								src={getImagePathById(serviceDetailed.galleryId1, images)}
-								alt=''
-							/>
+							<img src={image1} alt='' />
 							<div className={styles.backFigure}></div>
 						</div>
 					</div>
 					<div className={styles.scdContainer}>
 						<div className={styles.scdImageContainer}>
-							<img
-								src={getImagePathById(serviceDetailed.galleryId2, images)}
-								alt=''
-							/>
+							<img src={image2} alt='' />
 						</div>
 						<div className={styles.scdTextContainer}>
+							<h1>Что мы можем предложить</h1>
 							<p>{serviceDetailed.descriptionDetailed}</p>
 						</div>
 					</div>

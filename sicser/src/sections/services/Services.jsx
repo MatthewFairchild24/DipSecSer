@@ -65,7 +65,7 @@ export default function Services() {
 							<div className={styles.card} key={index}>
 								<ServiceCard
 									image={getImagePathById(service.galleryId, images)}
-									title={service.title}
+									title={service.name}
 									description={service.description}
 								>
 									<Link to={`/service/${service.id}`}>

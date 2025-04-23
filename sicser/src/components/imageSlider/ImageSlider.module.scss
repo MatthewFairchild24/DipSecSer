@@ -2,6 +2,21 @@
 	height: 100%;
 	position: relative;
 
+	.slide {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		border-radius: 10px;
+		background-position: center;
+		background-size: cover;
+		transition: opacity 0.9s ease-in-out;
+		opacity: 0;
+	}
+
+	.slide.active {
+		opacity: 1;
+	}
+
 	.leftArrow {
 		position: absolute;
 		top: 50%;
@@ -27,11 +42,22 @@
 	.containerDots {
 		display: flex;
 		justify-content: center;
+		position: absolute; /* Позиционируем точки относительно слайдера */
+		bottom: 20px; /* Располагаем точки внизу слайдера */
+		left: 50%;
+		transform: translateX(-50%); /* Центрируем точки по горизонтали */
+		z-index: 2; /* Убедитесь, что точки находятся поверх слайдов */
 	}
 
 	.dot {
-		margin: 0, 3px;
+		margin: 0 3px; /* Исправлено: запятая заменена на пробел */
 		cursor: pointer;
 		font-size: 28px;
+		color: #ffffff; /* Цвет неактивных точек */
+		transition: color 0.3s; /* Плавный переход цвета */
+	}
+
+	.dot.active {
+		color: #717171; /* Цвет активной точки */
 	}
 }

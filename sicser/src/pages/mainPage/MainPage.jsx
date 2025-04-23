@@ -19,7 +19,7 @@ export default function MainPage() {
 			<BinCon></BinCon>
 			<AboutCompany></AboutCompany>
 			<Services></Services>
-			<BinCon></BinCon>
+
 			<OurProjects></OurProjects>
 			<BinCon></BinCon>
 			<Feedback></Feedback>

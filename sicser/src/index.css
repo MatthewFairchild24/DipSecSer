@@ -1,3 +1,12 @@
+@font-face {
+	font-family: 'Roboto';
+	src: url('../public/fonts/Roboto/Roboto-Regular.ttf') format('ttf'),
+		url('../public/fonts/Roboto/Roboto-Bold.ttf') format('ttf'),
+		url('../public/fonts/Roboto/Roboto-Thin.ttf') format('ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -5,8 +14,14 @@
 }
 
 body {
-	font-family: 'Arial', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	line-height: 1.6;
 	background-color: #f4f4f4;
 	color: #333;
+}
+p {
+	font-size: 20px;
+}
+h3 {
+	font-size: 32px;
 }

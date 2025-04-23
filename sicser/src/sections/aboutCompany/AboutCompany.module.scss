@@ -1,7 +1,7 @@
 .containerAC {
 	.contentAC {
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
 		align-items: center;
 		padding: 50px;
 		background-color: #fff;
@@ -10,6 +10,7 @@
 		flex: 1;
 		padding: 30px 200px 0 40px;
 		text-align: center;
+		max-width: 1200px;
 	}
 	.stackImgAC {
 		position: relative;

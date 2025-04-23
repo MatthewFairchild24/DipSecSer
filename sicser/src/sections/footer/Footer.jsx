@@ -2,10 +2,12 @@ import styles from '../footer/Footer.module.scss'
 import { useState, useEffect } from 'react'
 import useApiUrl from '../../hooks/useApiUrl'
 import axios from 'axios'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function Footer() {
 	const [data, setData] = useState([])
 	const { getApiUrl } = useApiUrl()
+	const location = useLocation()
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -36,17 +38,32 @@ export default function Footer() {
 					<h3>Навигация по сайту</h3>
 					<ul className={styles.navList}>
 						<li className={styles.navItem}>
-							<a href='#MainSection'>Главная</a>
-						</li>
-
-						<li className={styles.navItem}>
-							<a href='#Services'>Наши услуги</a>
-						</li>
-						<li className={styles.navItem}>
-							<a href='#OurProjects'>Наши проекты</a>
+							{location.pathname === '/' ? (
+								<a href='#MainSection'>На главную</a>
+							) : (
+								<Link to='/#MainSection'>На главную</Link>
+							)}
 						</li>
 						<li className={styles.navItem}>
-							<a href='#Contacts'>Обратная связь</a>
+							{location.pathname === '/' ? (
+								<a href='#Services'>Наши услуги</a>
+							) : (
+								<Link to='/#Services'>Наши услуги</Link>
+							)}
+						</li>
+						<li className={styles.navItem}>
+							{location.pathname === '/' ? (
+								<a href='#OurProjects'>Наши проекты</a>
+							) : (
+								<Link to='/#OurProjects'>Наши проекты</Link>
+							)}
+						</li>
+						<li className={styles.navItem}>
+							{location.pathname === '/' ? (
+								<a href='#Contacts'>Обратная связь</a>
+							) : (
+								<Link to='/#Contacts'>Обратная свзязь</Link>
+							)}
 						</li>
 					</ul>
 				</div>
