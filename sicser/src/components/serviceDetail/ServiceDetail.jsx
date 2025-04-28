@@ -6,8 +6,9 @@ import useApiUrl from '../../hooks/useApiUrl'
 export default function ServiceDetail() {
 	const { id } = useParams()
 	const [serviceDetailed, setServiceDetailed] = useState(null)
-	const [image1, setImage1] = useState('')
-	const [image2, setImage2] = useState('')
+	const [images, setImages] = useState([])
+	// const [image1, setImage1] = useState('')
+	// const [image2, setImage2] = useState('')
 	const { getApiUrl } = useApiUrl()
 
 	useEffect(() => {
@@ -18,32 +19,44 @@ export default function ServiceDetail() {
 					throw new Error('Connection failed! ', response.statusText)
 				}
 				const data = await response.json()
-				setServiceDetailed(data)
+
+				if (JSON.stringify(data) !== JSON.stringify(serviceDetailed)) {
+					setServiceDetailed(data)
+				}
 			} catch (error) {
 				console.error('Error fetching service details', error)
 			}
 		}
 		const fetchGallery = async () => {
 			try {
-				const response = await fetch(getApiUrl(`Galleries/${1}`))
+				const response = await fetch(getApiUrl(`Galleries`))
 				if (!response.ok) {
 					throw new Error(`Connection failed! ${response.statusText}`)
 				}
 				const data = await response.json()
-				setImage1(data.imagePath)
-				setImage2(data.imagePath)
+				setImages(data)
 			} catch (error) {
 				console.error('Error fetching service details', error)
 			}
 		}
+		// setServiceDetailed(null)
+		// setImage1('')
+		// setImage2('')
+
 		fetchServiceDetails()
 		fetchGallery()
-	}, [id, getApiUrl])
+	}, [id])
+
+	const findImage = (images, galleryId) => {
+		return images.find((image) => image.id === galleryId || null)
+	}
 
 	if (!serviceDetailed) {
 		return <div>Loading...</div>
 	}
 
+	const image1 = findImage(images, serviceDetailed.galleryId1)
+	const image2 = findImage(images, serviceDetailed.galleryId2)
 	return (
 		<>
 			<section className={styles.ServiceDetailed}>
@@ -54,13 +67,13 @@ export default function ServiceDetail() {
 							<p>{serviceDetailed.description}</p>
 						</div>
 						<div className={styles.fstImageContainer}>
-							<img src={image1} alt='' />
+							<img src={image1.imagePath} alt='' />
 							<div className={styles.backFigure}></div>
 						</div>
 					</div>
 					<div className={styles.scdContainer}>
 						<div className={styles.scdImageContainer}>
-							<img src={image2} alt='' />
+							<img src={image2.imagePath} alt='' />
 						</div>
 						<div className={styles.scdTextContainer}>
 							<h1>Что мы можем предложить</h1>

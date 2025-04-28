@@ -21,6 +21,13 @@ header {
 		display: flex;
 		align-items: center;
 	}
+
+	button {
+		cursor: none;
+		opacity: 0;
+		pointer-events: none;
+	}
+
 	.navList {
 		list-style: none;
 		display: flex;

@@ -42,22 +42,22 @@
 	.containerDots {
 		display: flex;
 		justify-content: center;
-		position: absolute; /* Позиционируем точки относительно слайдера */
-		bottom: 20px; /* Располагаем точки внизу слайдера */
+		position: absolute; 
+		bottom: 20px; 
 		left: 50%;
-		transform: translateX(-50%); /* Центрируем точки по горизонтали */
-		z-index: 2; /* Убедитесь, что точки находятся поверх слайдов */
+		transform: translateX(-50%);
+		z-index: 2; 
 	}
 
 	.dot {
-		margin: 0 3px; /* Исправлено: запятая заменена на пробел */
+		margin: 0 3px; 
 		cursor: pointer;
 		font-size: 28px;
-		color: #ffffff; /* Цвет неактивных точек */
-		transition: color 0.3s; /* Плавный переход цвета */
+		color: #ffffff; 
+		transition: color 0.3s; 
 	}
 
 	.dot.active {
-		color: #717171; /* Цвет активной точки */
+		color: #717171; 
 	}
 }

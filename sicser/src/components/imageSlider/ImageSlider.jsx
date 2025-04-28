@@ -48,14 +48,15 @@ export default function ImageSlider({ slides }) {
 					&#11207;
 				</div>
 
-				<div
-					className={styles.slide}
-					style={{
-						backgroundImage: `url(${slides[currentIndex].url})`,
-						transition: 'opacity 0.5s ease-in-out',
-						opacity: 1,
-					}}
-				></div>
+				{slides.map((slide, index) => (
+					<div
+						key={index}
+						className={`${styles.slide} ${
+							index === currentIndex ? styles.active : ''
+						}`}
+						style={{ backgroundImage: `url(${slide.url})` }}
+					></div>
+				))}
 
 				<div className={styles.containerDots}>
 					{slides.map((slide, slideIndex) => (
